@@ -32,11 +32,8 @@ with open(budgetcsv) as csvfile:
         if Months == 1:
             prevprofit = int(row[1])
             continue
-        # For each row if the value in the Profit/Loss is positive, record the date as "GProfit_Date" and the profit as "GProfit". 
-        # For each row if the value in the Profit/Loss is negative, record the date as "GLoss_Date" and the loss in "GLoss".
-        # Compare "Profit/Loss" to the "GProfit", update "GProfit" if the new value is larger than the previous value.
-        # Compare "Profit/Loss" to the "GLoss", update "GLoss" if the new value is smaller than the previous value.
-
+        # For each row if the value in the Profit/Loss is positive and higher than previously recorded value, record the date as "GProfit_Date" and the profit as "GProfit". 
+        # For each row if the value in the Profit/Loss is negative and less than the previously recorded value , record the date as "GLoss_Date" and the loss in "GLoss".
         delta = int(row[1]) - prevprofit
         if delta > 0 and delta > GProfit:
             GProfit = delta
@@ -44,19 +41,12 @@ with open(budgetcsv) as csvfile:
         if delta < 0 and delta < GLoss:
             GLoss = delta
             GLoss_Date = row[0]
-                      
+        # Record change in "Profit/Loss" from row to row
         change +=  delta
         prevprofit = int(row[1])
-         
+    # Calculate average change in "Profit/Loss" for the entire time period  
     avg_change = change/(Months-1)
-    # print("Financial Analysis")
-    # print("----------------------------------------")
-    # print("Total Months: ", Months)
-    # print("Net Total Profit/Loss: ", "${:.0f}".format(Sum_Profit))
-    # print("Average Change in Profit/Loss: ", "${:.2f}".format(avg_change))
-    # print("Greatest Increase in Profits: ", GProfit_Date, "(", "${:.0f}".format(GProfit), ")")
-    # print("Greatest Decrease in Profits: ", GLoss_Date, "(", "${:.0f}".format(GLoss), ")")
-    
+    # Print results    
     line1 = "Financial Analysis \n"
     line2 = "---------------------------------------- \n"
     line3 = "Total Months: {}\n". format(Months)
