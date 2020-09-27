@@ -53,7 +53,7 @@ with open(budgetcsv) as csvfile:
     line4 = "Net Total Profit/Loss: ${:.0f}\n".format(Sum_Profit)
     line5 = "Average Change in Profit/Loss: ${:.2f}\n".format(avg_change)
     line6 = "Greatest Increase in Profits: {} (${:.0f})\n".format(GProfit_Date,GProfit)
-    line7 = "Greatest Decrease in Profits: {} (${:.0f}\n".format(GLoss_Date,GLoss)
+    line7 = "Greatest Decrease in Profits: {} (${:.0f})\n".format(GLoss_Date,GLoss)
     
     print(line1 + line2 + line3 + line4 + line5 + line6 + line7)
 
