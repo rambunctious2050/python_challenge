@@ -68,7 +68,7 @@ with open(budgetcsv) as csvfile:
     print(line1 + line2 + line3 + line4 + line5 + line6 + line7)
 
 # Write data to a text file
-with open("analysis/Output.txt", "w") as text_file:
+with open("analysis/PyBankOutput.txt", "w") as text_file:
     text_file.writelines([line1, line2, line3, line4, line5, line6, line7])
     
 
